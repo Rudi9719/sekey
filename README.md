@@ -39,7 +39,7 @@ Unfortunately, I can't make a Homebrew formula because KeyChain API requires ent
     <string>com.ntrippar.sekey</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/absolute/path/to/SeKey.app/Contents/MacOS/sekey</string>
+        <string>/Applications/SeKey.app/Contents/MacOS/sekey</string>
         <string>--daemon</string>
     </array>
     <key>StandardErrorPath</key>
@@ -54,7 +54,7 @@ Unfortunately, I can't make a Homebrew formula because KeyChain API requires ent
 ```
 4. Fix permissions
 ```sh
-chown youruser:staff /absolute/path/to/SeKey.app/Contents/MacOS/sekey
+chown $(whoami):staff /Applications/SeKey.app/Contents/MacOS/sekey
 ```
 5. Load the agent to the user account:
 ```sh
@@ -62,8 +62,8 @@ launchctl load -F ~/Library/LaunchAgents/com.ntrippar.sekey.plist
 ```
 6. Set enviroment variables and fix the path of sekey folder.
 ```
-export PATH=$PATH:/path/to/SeKey.app/Contents/MacOS
-export SSH_AUTH_SOCK=$HOME/.sekey/ssh-agent.ssh
+echo 'export PATH=$PATH:/Appliocations/SeKey.app/Contents/MacOS' >> ~/.bash_profile
+echo 'export SSH_AUTH_SOCK=$HOME/.sekey/ssh-agent.ssh' >> ~/.bash_profile
 ```
 
 ## Usage
